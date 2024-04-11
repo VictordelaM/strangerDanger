@@ -1,0 +1,1 @@
+console.log("victor ist cool schwöre möhre")
