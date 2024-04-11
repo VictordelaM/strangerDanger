@@ -28,11 +28,17 @@ userRouter.post('/login', mult.none() , async(req,res)=>{
         return 
     }
     const user = await User.findOne({username}).lean()
-    if(user ===null){
+    if(user === null){
         res.status(401).send("falsches Passwort")
         return
     }
     const token = jwt.sign({username}, process.env.JWT_SECRET)
     res.cookie("token", token)
     res.json({status: 'ok', token: token})
+})
+
+userRouter.get('/:username', async(req,res)=>{
+    const username = req.params.username
+    const user = await User.findOne({username}).lean();
+    res.json(user)
 })

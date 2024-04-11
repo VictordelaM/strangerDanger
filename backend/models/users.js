@@ -17,10 +17,6 @@ const userModel =new Schema({
     emailVerified:{
         type: Boolean,
         default: false
-    },
-    balance:{
-        type: Number,
-        default: 0
     }
 })
 
