@@ -1,9 +1,13 @@
-import React from 'react'
+import Nav from "../components/Nav";
+import UploadImgForm from "../components/UploadImgForm";
 
 const UploadImg = () => {
-  return (
-    <div>UploadImg</div>
-  )
+    return ( 
+        <>
+        <Nav />
+        <UploadImgForm />
+        </>
+     );
 }
-
-export default UploadImg
+ 
+export default UploadImg;
