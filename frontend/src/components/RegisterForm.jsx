@@ -3,16 +3,16 @@ const RegisterForm = () => {
         <>
         <form>
             <div>
-                <label for="username">Benutzername:</label>
-                <input type="text" id="username" name="username"></input>
+                {/* <label for="username">Benutzername:</label> */}
+                <input type="text" id="usernameInput" name="username" placeholder="username"></input>
             </div>
             <div>
-                <label for="email">E-Mail:</label>
-                <input type="email" id="email" name="email"></input>
+                {/* <label for="email">E-Mail:</label> */}
+                <input type="email" id="emailInput" name="email" placeholder="email"></input>
             </div>
             <div>
-                <label for="password">Passwort:</label>
-                <input type="password" id="password" name="password"></input>
+                {/* <label for="password">Passwort:</label> */}
+                <input type="password" id="passwordInput" name="password" placeholder="password"></input>
             </div>
             <div>
                 <button type="submit">Registrieren</button>

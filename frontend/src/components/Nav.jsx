@@ -3,13 +3,13 @@ import { Link, NavLink } from "react-router-dom"
 const Nav = () => {
     return ( 
         <>
-        <NavLink>
-            <Link to="/"><button>Home</button></Link>
-            <Link to="/images"><button>Images</button></Link>
-            <Link to="/Login"><button>Login</button></Link>
-            <Link to="/Register"><button>Register</button></Link>
-            <Link to="/UploadImg"><button>Image Upload</button></Link>
-        </NavLink>
+        <nav>
+            <NavLink to="/"><button>Home</button></NavLink>
+            <NavLink to="/images"><button>Images</button></NavLink>
+            <NavLink to="/Login"><button>Login</button></NavLink>
+            <NavLink to="/Register"><button>Register</button></NavLink>
+            <NavLink to="/UploadImg"><button>Image Upload</button></NavLink>
+        </nav>
         </>
      );
 }
