@@ -9,11 +9,12 @@ import {userRouter} from './controller/user.js'
 const PORT = 3000
 const app = express()
 
-await mongoose.connect(process.env.MONGODB_URI)
+await mongoose.connect(process.env.MONGODB_URL)
 
 app.use(cors())
 app.use("/user", userRouter)
 // app.use("/image", imageRouter)
 
-app.listen(PORT)
-console.log(`listen http://localhost:${PORT}`)
+app.listen(PORT, () => {
+  console.log(`listening on http://localhost${PORT}`);
+});
