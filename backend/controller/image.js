@@ -25,3 +25,17 @@ imageRouter.get("/", async (req, res) => {
   const image = await Image.find().lean();
   res.json(image);
 });
+
+imageRouter.patch("/", async (req, res) => {
+  const { _id, text, likes } = req.body;
+  if (!text ||!text) {
+    res.sendStatus(403);
+    return;
+  }
+  const image = await Image.findOneAndUpdate(
+    { _id },
+    { text, likes },
+    { new: true }
+  );
+  res.json(image);
+})
