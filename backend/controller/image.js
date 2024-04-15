@@ -8,15 +8,15 @@ const mult = multer({ storage: multer.memoryStorage() });
 imageRouter.post("/create", mult.single("image"), async (req, res) => {
   console.log(req.file);
   const { text, likes } = req.body;
+  if (!text || !req.file) {
+    res.sendStatus(403);
+    return;
+  }
   console.log(req.body);
   const uploadResult = await uploadImage(req.file.buffer);
   console.log(uploadResult);
   const imageUrl = uploadResult.secure_url;
   console.log(req.file);
-  if (!text || !text) {
-    res.sendStatus(403);
-    return;
-  }
   const image = await Image.create({ imageUrl, text, likes });
   res.json(image);
 });
@@ -26,13 +26,13 @@ imageRouter.get("/", async (req, res) => {
   res.json(image);
 });
 
-imageRouter.patch("/:id",mult.single("image"), async (req, res) => {
-  const {  text, likes } = req.body;
-  const id = req.params.id
+imageRouter.patch("/:id", mult.single("image"), async (req, res) => {
+  const { text, likes } = req.body;
+  const id = req.params.id;
   const image = await Image.findOneAndUpdate(
-    { _id :id },
+    { _id: id },
     { text, likes },
-    {new:true}
+    { new: true }
   );
   res.json(image);
-})
+});
