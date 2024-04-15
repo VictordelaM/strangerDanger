@@ -47,7 +47,7 @@ export const uploadImg = (event) => {
 };
 
 export const getImages = (images) => {
-  fetch("http://localhost:3000/image")
+  fetch(import.meta.env.VITE_BACKEND_URL + "/image")
     .then((resp) => resp.json())
     .then((json) => images(json));
 };
