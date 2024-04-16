@@ -4,7 +4,7 @@ import "./RegisterForm.css";
 const RegisterForm = () => {
     return ( 
         <>
-        <form >
+        <form onSubmit={register}>
             <h2>Register</h2>
             <div>
                 {/* <label for="username">Benutzername:</label> */}
@@ -27,3 +27,4 @@ const RegisterForm = () => {
 }
  
 export default RegisterForm;
+

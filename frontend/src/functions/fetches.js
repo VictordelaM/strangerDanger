@@ -7,10 +7,12 @@ export const login = async (event) => {
   event.preventDefault();
   const form = event.target;
   const formData = new FormData(form);
+  console.log(formData)
   const response = await fetch(import.meta.env.VITE_BACKEND_URL+"/user/login", {
     method: "POST",
     body: formData,
   });
+
   const { status, token } = await response.json();
   localStorage.setItem("token", token);
   location.reload()
@@ -21,7 +23,7 @@ export const logout = () =>{
   location.reload()
 }
 
-export const register = (event) => {
+export const register = async(event) => {
   event.preventDefault();
   const form = event.target;
   const formData = new FormData(form);
@@ -29,6 +31,19 @@ export const register = (event) => {
     method: "POST",
     body: formData,
   });
+  console.log("operation succseed");
+  console.log(formData)
+  const response = await fetch(import.meta.env.VITE_BACKEND_URL+"/user/login", {
+    method: "POST",
+    body: formData,
+  });
+
+  const { status, token } = await response.json();
+  localStorage.setItem("token", token);
+  location.reload()
+  // const formDataLogin = new FormData();
+  // formDataLogin.append('x', 2);
+  // formDataLogin.append('y', 4);
 };
 
 export const getUser = (username, setUser) => {

@@ -22,7 +22,7 @@ userRouter.post('/register', mult.none(), async(req, res)=>{
 })
 
 userRouter.post('/login', mult.none() , async(req,res)=>{
-    const {username, password} = req.body
+    const {username, password, email} = req.body
     if(!username || !password){
         res.sendStatus(403)
         return 
