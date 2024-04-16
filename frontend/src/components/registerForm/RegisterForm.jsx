@@ -1,7 +1,10 @@
+import "./RegisterForm.css";
+
 const RegisterForm = () => {
     return ( 
         <>
         <form>
+            <h2>Register</h2>
             <div>
                 {/* <label for="username">Benutzername:</label> */}
                 <input type="text" id="usernameInput" name="username" placeholder="username"></input>
