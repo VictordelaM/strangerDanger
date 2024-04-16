@@ -6,17 +6,13 @@ export const imageRouter = express.Router();
 const mult = multer({ storage: multer.memoryStorage() });
 
 imageRouter.post("/create", mult.single("image"), async (req, res) => {
-  console.log(req.file);
   const { text, likes } = req.body;
   if (!text || !req.file) {
     res.sendStatus(403);
     return;
   }
-  console.log(req.body);
   const uploadResult = await uploadImage(req.file.buffer);
-  console.log(uploadResult);
   const imageUrl = uploadResult.secure_url;
-  console.log(req.file);
   const image = await Image.create({ imageUrl, text, likes });
   res.json(image);
 });

@@ -17,7 +17,6 @@ userRouter.post('/register', mult.none(), async(req, res)=>{
     const salt = await bcrypt.genSalt()
     const hash = await bcrypt.hash(password, salt)
     const user = await User.create({username, password:hash, email})
-    console.log(user)
     res.json(user)
 })
 

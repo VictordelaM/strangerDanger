@@ -3,11 +3,9 @@ import { mainContext } from "../context/mainProvider.jsx";
 import { decryptToken } from "./decrypt.js";
 
 export const login = async (event) => {
-  console.log("operation succseed");
   event.preventDefault();
   const form = event.target;
   const formData = new FormData(form);
-  console.log(formData)
   const response = await fetch(import.meta.env.VITE_BACKEND_URL+"/user/login", {
     method: "POST",
     body: formData,
@@ -31,8 +29,6 @@ export const register = async(event) => {
     method: "POST",
     body: formData,
   });
-  console.log("operation succseed");
-  console.log(formData)
   const response = await fetch(import.meta.env.VITE_BACKEND_URL+"/user/login", {
     method: "POST",
     body: formData,
@@ -60,7 +56,6 @@ export const uploadImg = (event) => {
   event.preventDefault();
   const form = event.target;
   const formData = new FormData(form);
-  console.log(formData)
   fetch(import.meta.env.VITE_BACKEND_URL + "/image/create", {
     method: "POST",
     body: formData,
@@ -68,7 +63,6 @@ export const uploadImg = (event) => {
 };
 
 export const getImages = (images) => {
-    console.log('images:', images)
   fetch(import.meta.env.VITE_BACKEND_URL + "/image")
     .then((resp) => resp.json())
     .then((json) => images(json));

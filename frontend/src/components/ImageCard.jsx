@@ -2,7 +2,6 @@ const ImageCard = ({ images }) => {
   return (
     <>
       {/* {images.map((img) => {
-        console.log(img);
         return (
           <>
             <img src={img.imageUrl} alt="" />

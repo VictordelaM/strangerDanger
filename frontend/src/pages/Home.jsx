@@ -11,9 +11,7 @@ const Home = () => {
     useEffect(() => {
         const token = decryptToken().payload.username
         getUser(token, setUser)
-        console.log(user)
       }, []);
-      console.log(user?.username)
     return ( 
         <>
         <Nav />

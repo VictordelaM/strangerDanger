@@ -3,7 +3,6 @@ import Nav from "../components/nav/Nav";
 import { logout } from "../functions/fetches";
 
 const Login = () => {
-    console.log('token',localStorage.getItem('token'))
     if(localStorage.getItem('token')){return ( 
         <>
         <Nav />
