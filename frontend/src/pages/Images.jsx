@@ -2,18 +2,19 @@ import { useContext, useEffect, useState } from "react";
 import { mainContext } from "../context/mainProvider";
 import ImageCard from "../components/ImageCard";
 import { getImages } from "../functions/fetches";
+import Nav from "../components/nav/Nav";
 
 const Images = () => {
   const { image, setImage } = useContext(mainContext);
 
 
-  //! warum der parameter?
   useEffect(() => {
     getImages(setImage);
   }, []);
 
-  return (
+  if(localStorage.getItem('token')){return (
     <>
+    <Nav/>
       {image?.map((img) => {
         return (
           <div key={img._id}>
@@ -22,7 +23,15 @@ const Images = () => {
         );
       })}
     </>
-  );
+  );}
+  else{
+    return(
+      <>
+      <Nav/>
+      <p>login to see images</p>
+      </>
+    )
+  }
 };
 
 export default Images;

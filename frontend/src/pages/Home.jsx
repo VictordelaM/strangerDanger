@@ -22,7 +22,11 @@ const Home = () => {
      );}
      else{
         return (
+            <>
             <Nav />
+            <p>login to see username</p>
+            </>
+            
         )
      }
 }
