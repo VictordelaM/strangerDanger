@@ -1,15 +1,17 @@
-import "./UploadImgForm.css"
-
+import { uploadImg } from "../../functions/fetches.js";
+import './uploadImgForm.css'
 const UploadImgForm = () => {
-    return ( 
-        <div className="upload-form">
-            <form>
-                <label htmlFor="file">Upload Image</label>
-                <input name="datei" type="file"></input>  
-                <button>Upload!</button>
-            </form>
-        </div>
-     );
-}
- 
+  return (
+    <>
+      <form onSubmit={uploadImg}>
+        <label htmlFor="text">Bildbeschreibung</label>
+        <input type="text" name="text" id="inputComment"></input>
+        <label for="file">Upload Image</label>
+        <input name="image" type="file"></input>
+        <button>Upload!</button>
+      </form>
+    </>
+  );
+};
+
 export default UploadImgForm;
