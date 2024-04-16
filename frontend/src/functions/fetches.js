@@ -7,7 +7,7 @@ export const login = async (event) => {
   event.preventDefault();
   const form = event.target;
   const formData = new FormData(form);
-  const response = await fetch("http://localhost:3000/user/login", {
+  const response = await fetch(import.meta.env.VITE_BACKEND_URL+"/user/login", {
     method: "POST",
     body: formData,
   });
@@ -19,7 +19,7 @@ export const register = (event) => {
   event.preventDefault();
   const form = event.target;
   const formData = new FormData(form);
-  fetch("http://localhost:3000/user/register", {
+  fetch(import.meta.env.VITE_BACKEND_URL+"/user/register", {
     method: "POST",
     body: formData,
   });
@@ -37,9 +37,9 @@ export const getUser = () => {
 
 export const uploadImg = (event) => {
   event.preventDefault();
-  console.log(event.target);
   const form = event.target;
   const formData = new FormData(form);
+  console.log(formData)
   fetch(import.meta.env.VITE_BACKEND_URL + "/image/create", {
     method: "POST",
     body: formData,
@@ -47,6 +47,7 @@ export const uploadImg = (event) => {
 };
 
 export const getImages = (images) => {
+    console.log('images:', images)
   fetch(import.meta.env.VITE_BACKEND_URL + "/image")
     .then((resp) => resp.json())
     .then((json) => images(json));

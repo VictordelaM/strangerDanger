@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { mainContext } from "../context/mainProvider";
 
+
 export const decryptToken = () => {
     const {setUsername, setUser} = useContext(mainContext)
     const token = localStorage.getItem('token')
