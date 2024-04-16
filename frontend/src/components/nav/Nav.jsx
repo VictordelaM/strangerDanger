@@ -22,8 +22,13 @@ const Nav = () => {
                 <NavLink to="/Register">Register</NavLink> */}
                 <NavLink to="/UploadImg">Image Upload</NavLink>
                 <div id="usercard">
-                    <p>{user?.username}</p>
-                    <button onClick={logout}>logout</button>
+                    <div id="profilePicture">
+                        <img src={user?.pictureUrl} alt="profilpicture" />
+                    </div>
+                    <div id="nameLogout">
+                        <p>{user?.username}</p>
+                        <button onClick={logout}>logout</button>
+                    </div>
                 </div>
             </nav>
             </>
