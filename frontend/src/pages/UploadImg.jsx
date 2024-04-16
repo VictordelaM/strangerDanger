@@ -1,5 +1,5 @@
-import Nav from "../components/Nav";
-import UploadImgForm from "../components/UploadImgForm";
+import Nav from "../components/nav/Nav";
+import UploadImgForm from "../components/uploadImgForm/UploadImgForm";
 
 const UploadImg = () => {
     return ( 

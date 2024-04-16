@@ -1,5 +1,5 @@
-import Nav from "../components/Nav";
-import RegisterForm from "../components/RegisterForm";
+import Nav from "../components/nav/Nav";
+import RegisterForm from "../components/registerForm/RegisterForm";
 
 const Register = () => {
     return ( 
