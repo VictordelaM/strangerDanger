@@ -6,6 +6,8 @@ import { getImages } from "../functions/fetches";
 const Images = () => {
   const { image, setImage } = useContext(mainContext);
 
+
+  //! warum der parameter?
   useEffect(() => {
     getImages(setImage);
   }, []);

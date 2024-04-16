@@ -13,7 +13,13 @@ export const login = async (event) => {
   });
   const { status, token } = await response.json();
   localStorage.setItem("token", token);
+  location.reload()
 };
+
+export const logout = () =>{
+  localStorage.removeItem('token')
+  location.reload()
+}
 
 export const register = (event) => {
   event.preventDefault();
@@ -25,8 +31,8 @@ export const register = (event) => {
   });
 };
 
-export const getUser = () => {
-  const { username, setUser } = useContext(mainContext);
+export const getUser = (username, setUser) => {
+  // const { username, setUser } = useContext(mainContext);
   decryptToken();
   fetch(import.meta.env.VITE_BACKEND_URL + "/user/" + username)
     .then((response) => response.json())
@@ -52,3 +58,5 @@ export const getImages = (images) => {
     .then((resp) => resp.json())
     .then((json) => images(json));
 };
+
+

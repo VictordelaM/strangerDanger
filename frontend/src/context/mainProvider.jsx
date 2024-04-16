@@ -9,6 +9,8 @@ const MainProvider = ({ children }) => {
   const [emailVerified, setEmailVerified] = useState(false);
   const [token, setToken] = useState(null);
   const [image, setImage] = useState();
+  const [login,setLogin] = useState(false);
+
 
   return (
     <>

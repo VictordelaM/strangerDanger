@@ -6,7 +6,7 @@ const UploadImgForm = () => {
       <form onSubmit={uploadImg}>
         <label htmlFor="text">Bildbeschreibung</label>
         <input type="text" name="text" id="inputComment"></input>
-        <label for="file">Upload Image</label>
+        <label htmlFor="file">Upload Image</label>
         <input name="image" type="file"></input>
         <button>Upload!</button>
       </form>

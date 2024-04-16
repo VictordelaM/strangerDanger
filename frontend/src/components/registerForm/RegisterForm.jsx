@@ -1,9 +1,10 @@
+import { register } from "../../functions/fetches";
 import "./RegisterForm.css";
 
 const RegisterForm = () => {
     return ( 
         <>
-        <form>
+        <form >
             <h2>Register</h2>
             <div>
                 {/* <label for="username">Benutzername:</label> */}
