@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { mainContext } from "../context/MainProvider.jsx"
+import { mainContext } from "../context/mainProvider.jsx"
 import { decryptToken } from "./decrypt.js"
 
 export const login = async (event) => {
