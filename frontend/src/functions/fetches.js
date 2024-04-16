@@ -6,6 +6,7 @@ export const login = async (event) => {
   event.preventDefault();
   const form = event.target;
   const formData = new FormData(form);
+
   const response = await fetch(import.meta.env.VITE_BACKEND_URL+"/user/login", {
     method: "POST",
     body: formData,
@@ -14,6 +15,9 @@ export const login = async (event) => {
   const { status, token } = await response.json();
   localStorage.setItem("token", token);
   location.reload()
+  //! mit env datei austauschen
+  //? window.location = import.meta.env.URL
+  window.location = 'http://localhost:5173'
 };
 
 export const logout = () =>{
@@ -21,7 +25,8 @@ export const logout = () =>{
   location.reload()
 }
 
-export const register = async(event) => {
+//!automatischer login klappt erst nach 2. ausführung
+export const register = async (event) => {
   event.preventDefault();
   const form = event.target;
   const formData = new FormData(form);
@@ -37,13 +42,12 @@ export const register = async(event) => {
   const { status, token } = await response.json();
   localStorage.setItem("token", token);
   location.reload()
-  // const formDataLogin = new FormData();
-  // formDataLogin.append('x', 2);
-  // formDataLogin.append('y', 4);
+  //! mit env datei austauschen
+  //? window.location = import.meta.env.URL
+  window.location = 'http://localhost:5173'
 };
 
 export const getUser = (username, setUser) => {
-  // const { username, setUser } = useContext(mainContext);
   decryptToken();
   fetch(import.meta.env.VITE_BACKEND_URL + "/user/" + username)
     .then((response) => response.json())
