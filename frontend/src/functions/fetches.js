@@ -1,8 +1,3 @@
-import { useContext, useState } from "react";
-import { mainContext } from "../context/mainProvider.jsx";
-import { decryptToken } from "./decrypt.js";
-
-
 export const login = async (event) => {
   event.preventDefault();
   const form = event.target;
@@ -30,7 +25,7 @@ export const register = async (event) => {
   event.preventDefault();
   const form = event.target;
   const formData = new FormData(form);
-  fetch(import.meta.env.VITE_BACKEND_URL+"/user/register", {
+  const responseRegister = await fetch(import.meta.env.VITE_BACKEND_URL+"/user/register", {
     method: "POST",
     body: formData,
   });

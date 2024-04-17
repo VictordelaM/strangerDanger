@@ -1,8 +1,4 @@
-import { useContext ,useEffect} from "react";
 import Nav from "../components/nav/Nav";
-import { decryptToken } from "../functions/decrypt";
-import { mainContext } from "../context/mainProvider";
-import { getUser } from "../functions/fetches";
 
 
 const Home = () => {
