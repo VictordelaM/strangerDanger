@@ -4,6 +4,7 @@ import { decryptToken } from "../functions/decrypt";
 import { mainContext } from "../context/mainProvider";
 import { getUser } from "../functions/fetches";
 
+
 const Home = () => {
     console.log(import.meta.env.OWN_URL)
     console.log(import.meta.env.VITE_BACKEND_URL)
