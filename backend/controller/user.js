@@ -27,21 +27,19 @@ userRouter.post('/login', mult.none() , async(req,res)=>{
         return 
     }
     const user = await User.findOne({username}).lean()
-    console.log('user:', user)
     if(user === null){
         res.status(401).send("falsches Passwort")
         return
     }
     const compareResult = await bcrypt.compare(password, user.password)
-    // console.log('test',password, user.password);
-    // console.log('test2',compareResult)
     if (!compareResult) {
     //   res.sendStatus(401);
         res.json({status: 'failed'})
-    }
-    const token = jwt.sign({username}, process.env.JWT_SECRET)
-    res.cookie("token", token)
-    res.json({status: 'ok', token: token})
+    }else{
+        const token = jwt.sign({username}, process.env.JWT_SECRET)
+        res.cookie("token", token)
+        res.json({status: 'ok', token: token})}
+    
 })
 
 userRouter.get('/:username', async(req,res)=>{

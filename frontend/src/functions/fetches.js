@@ -15,12 +15,9 @@ export const login = async (event) => {
   console.log('response', response)
 
   const { status, token } = await response.json();
+  if(status=='failed'){return status}
   localStorage.setItem("token", token);
   return status
-  // location.reload()
-  //! mit env datei austauschen
-  //? window.location = import.meta.env.URL
-  // window.location = 'http://localhost:5173'
 };
 
 export const logout = () =>{
