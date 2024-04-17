@@ -4,13 +4,7 @@ const ImageCard = ({ images }) => {
   const [like, setLike] = useState(false);
   return (
     <>
-      {/* {images.map((img) => {
-        return (
-          <>
-            <img src={img.imageUrl} alt="" />
-          </>
-        );
-      })} */}
+      
       <img src={images.imageUrl} alt="" />
       <p>{images.text}</p>
       <button
