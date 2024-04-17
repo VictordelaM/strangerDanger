@@ -14,10 +14,6 @@ const userModel =new Schema({
         type:String,
         required:true,
     },
-    emailVerified:{
-        type: Boolean,
-        default: false
-    },
     pictureUrl:{
         type: String,
         default:'https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg'

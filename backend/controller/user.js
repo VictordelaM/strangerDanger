@@ -27,9 +27,14 @@ userRouter.post('/login', mult.none() , async(req,res)=>{
         return 
     }
     const user = await User.findOne({username}).lean()
+    console.log('user:', user)
     if(user === null){
         res.status(401).send("falsches Passwort")
         return
+    }
+    const compareResult = await bcrypt.compare(password, user.password);
+    if (!compareResult) {
+      res.sendStatus(401);
     }
     const token = jwt.sign({username}, process.env.JWT_SECRET)
     res.cookie("token", token)

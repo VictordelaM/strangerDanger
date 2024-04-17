@@ -8,10 +8,11 @@ const LoginForm = () => {
 
     const onSubmit= async (event)=>{
         const status = await login(event)
-        // if(status === "ok"){
-        //     navigate("/")
-        // }
-        navigate("/")
+        console.log('status',status,localStorage.getItem('token'))
+        if(status === "ok"){
+            navigate("/")
+        }
+
     }
 
     return ( 
