@@ -7,12 +7,18 @@ import { decryptToken } from "../../functions/decrypt";
 
 const Nav = () => {
     if(localStorage.getItem('token')){
-        const {user, setUsername, setUser,token} = useContext(mainContext)
-        setUsername(token)
-        useEffect(() => {
-            const token = decryptToken().payload.username
-            setUser(getUser(token))
+        const {user, setUser} = useContext(mainContext)
+        useEffect( () => {
+            const userSet = async() =>{
+                const userName = decryptToken().payload.username
+                const user = await getUser(userName)
+                setUser(user)
+                console.log(user)
+            } 
+            userSet()
           }, []);
+          
+          
         return ( 
             <>
             <nav>

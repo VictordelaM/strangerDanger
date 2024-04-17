@@ -4,12 +4,7 @@ export const mainContext = createContext();
 
 const MainProvider = ({ children }) => {
   const [user, setUser] = useState();
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [emailVerified, setEmailVerified] = useState(false);
-  const [token, setToken] = useState(null);
   const [image, setImage] = useState();
-  const [login,setLogin] = useState(false);
 
 
   return (
@@ -18,8 +13,6 @@ const MainProvider = ({ children }) => {
         value={{
           user,
           setUser,
-          username,
-          setUsername,
           image,
           setImage,
         }}

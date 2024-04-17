@@ -32,7 +32,9 @@ userRouter.post('/login', mult.none() , async(req,res)=>{
         res.status(401).send("falsches Passwort")
         return
     }
-    const compareResult = await bcrypt.compare(password, user.password);
+    const compareResult = await bcrypt.compare(password, user.password)
+    // console.log('test',password, user.password);
+    // console.log('test2',compareResult)
     if (!compareResult) {
       res.sendStatus(401);
     }

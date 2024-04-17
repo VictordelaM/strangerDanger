@@ -6,15 +6,7 @@ import { getUser } from "../functions/fetches";
 
 
 const Home = () => {
-    console.log(import.meta.env.OWN_URL)
-    console.log(import.meta.env.VITE_BACKEND_URL)
     if(localStorage.getItem('token')){
-    const {user, setUsername, setUser,token} = useContext(mainContext)
-    setUsername(token)
-    useEffect(() => {
-        const token = decryptToken().payload.username
-        setUser(getUser(token))
-    }, []);
     return ( 
         <>
         <Nav />
