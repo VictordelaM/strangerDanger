@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { mainContext } from "../context/mainProvider.jsx";
 import { decryptToken } from "./decrypt.js";
 
+
 export const login = async (event) => {
   event.preventDefault();
   const form = event.target;
@@ -14,10 +15,11 @@ export const login = async (event) => {
 
   const { status, token } = await response.json();
   localStorage.setItem("token", token);
-  location.reload()
+  return status
+  // location.reload()
   //! mit env datei austauschen
   //? window.location = import.meta.env.URL
-  window.location = 'http://localhost:5173'
+  // window.location = 'http://localhost:5173'
 };
 
 export const logout = () =>{
@@ -43,17 +45,14 @@ export const register = async (event) => {
   localStorage.setItem("token", token);
   location.reload()
   //! mit env datei austauschen
-  //? window.location = import.meta.env.URL
+  //? window.location = import.meta.env.OWN_URL
   window.location = 'http://localhost:5173'
 };
 
-export const getUser = (username, setUser) => {
-  decryptToken();
-  fetch(import.meta.env.VITE_BACKEND_URL + "/user/" + username)
-    .then((response) => response.json())
-    .then((json) => {
-      setUser(json);
-    });
+export const getUser =async (username) => {
+  // decryptToken();
+  const response = await fetch(import.meta.env.VITE_BACKEND_URL + "/user/" + username)
+  return (await response.json())
 };
 
 export const uploadImg = (event) => {

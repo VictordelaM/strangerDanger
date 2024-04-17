@@ -12,7 +12,7 @@ const Home = () => {
     setUsername(token)
     useEffect(() => {
         const token = decryptToken().payload.username
-        getUser(token, setUser)
+        setUser(getUser(token))
       }, []);
     return ( 
         <>

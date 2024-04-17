@@ -1,8 +1,8 @@
 import { useContext ,useEffect} from "react";
-import { Link, NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import "./Nav.css"
 import { mainContext } from "../../context/mainProvider";
-import { getUser, login, logout, register } from "../../functions/fetches";
+import { getUser, logout} from "../../functions/fetches";
 import { decryptToken } from "../../functions/decrypt";
 
 const Nav = () => {
@@ -11,7 +11,7 @@ const Nav = () => {
         setUsername(token)
         useEffect(() => {
             const token = decryptToken().payload.username
-            getUser(token, setUser)
+            setUser(getUser(token))
           }, []);
         return ( 
             <>

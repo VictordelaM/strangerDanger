@@ -1,10 +1,22 @@
 import { login } from "../../functions/fetches";
 import "./LoginForm.css"
+import {useNavigate} from 'react-router-dom'
+import { useEffect } from "react";
 
 const LoginForm = () => {
+    const navigate = useNavigate()
+
+    const onSubmit= async (event)=>{
+        const status = await login(event)
+        // if(status === "ok"){
+        //     navigate("/")
+        // }
+        navigate("/")
+    }
+
     return ( 
         <>
-        <form onSubmit={login}>
+        <form onSubmit={onSubmit}>
             <h2>Login</h2>
             <div className="usernameLogin">
             {/* <label for="username">Benutzername:</label> */}
