@@ -5,6 +5,7 @@ import { uploadImage } from "../utils/uploadImage.js";
 export const imageRouter = express.Router();
 const mult = multer({ storage: multer.memoryStorage() });
 
+
 imageRouter.post("/create", mult.single("image"), async (req, res) => {
   const { text, likes } = req.body;
   if (!text || !req.file) {
