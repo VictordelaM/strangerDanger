@@ -1,9 +1,15 @@
 import { uploadImg } from "../../functions/fetches.js";
-import './uploadImgForm.css'
+import "./uploadImgForm.css";
+import { useNavigate } from "react-router-dom";
 const UploadImgForm = () => {
+  const navigate = useNavigate();
+  const redirect = (event) => {
+    uploadImg(event);
+    navigate("/");
+  };
   return (
     <>
-      <form onSubmit={uploadImg}>
+      <form onSubmit={redirect}>
         <label htmlFor="text">Bildbeschreibung</label>
         <input type="text" name="text" id="inputComment"></input>
         <label htmlFor="file">Upload Image</label>

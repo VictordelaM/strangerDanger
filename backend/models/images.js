@@ -10,14 +10,16 @@ const imageModel = new Schema(
       type: String,
       required: true,
     },
-    likes: {
-      type: Number,
-      default: 0,
-    },
+    likes: [{ user: { type: Schema.Types.ObjectId, ref: "User" } }],
     // comments: {
     //   type: String,
     //   ref: "User"
     // },
+    postedBy: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
   },
   { timestamps: true }
 );
