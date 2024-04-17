@@ -36,7 +36,8 @@ userRouter.post('/login', mult.none() , async(req,res)=>{
     // console.log('test',password, user.password);
     // console.log('test2',compareResult)
     if (!compareResult) {
-      res.sendStatus(401);
+    //   res.sendStatus(401);
+        res.json({status: 'failed'})
     }
     const token = jwt.sign({username}, process.env.JWT_SECRET)
     res.cookie("token", token)

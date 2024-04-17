@@ -12,6 +12,7 @@ export const login = async (event) => {
     method: "POST",
     body: formData,
   });
+  console.log('response', response)
 
   const { status, token } = await response.json();
   localStorage.setItem("token", token);
