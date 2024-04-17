@@ -1,5 +1,5 @@
 import { register } from "../../functions/fetches";
-import "./RegisterForm.css";
+import "./registerForm.css";
 
 const RegisterForm = () => {
     return ( 
