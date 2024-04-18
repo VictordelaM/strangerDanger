@@ -5,6 +5,7 @@ import "dotenv/config";
 import {userRouter} from './controller/user.js'
 import { imageRouter } from "./controller/image.js";
 import { v2 as cloudinary } from "cloudinary";
+import cookieParser from "cookie-parser";
 
 const PORT = 3000;
 const app = express();
@@ -16,8 +17,8 @@ cloudinary.config({
   api_key: "452675419245823",
   api_secret: process.env.CLOUDINARY_SECRET,
 });
-
-app.use(cors());
+app.use(cookieParser())
+app.use(cors({origin:process.env.CORS_ACCESS,credentials:true}));
 app.use("/user", userRouter);
 app.use("/image", imageRouter);
 

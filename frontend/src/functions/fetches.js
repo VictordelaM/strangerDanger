@@ -6,6 +6,7 @@ export const login = async (event) => {
   const response = await fetch(import.meta.env.VITE_BACKEND_URL+"/user/login", {
     method: "POST",
     body: formData,
+    credentials:'include'
   });
   console.log('response', response)
 
@@ -28,10 +29,12 @@ export const register = async (event) => {
   const responseRegister = await fetch(import.meta.env.VITE_BACKEND_URL+"/user/register", {
     method: "POST",
     body: formData,
+    credentials:'include'
   });
   const response = await fetch(import.meta.env.VITE_BACKEND_URL+"/user/login", {
     method: "POST",
     body: formData,
+    credentials:'include'
   });
 
   const { status, token } = await response.json();
@@ -43,8 +46,7 @@ export const register = async (event) => {
 };
 
 export const getUser =async (username) => {
-  // decryptToken();
-  const response = await fetch(import.meta.env.VITE_BACKEND_URL + "/user/" + username)
+  const response = await fetch(import.meta.env.VITE_BACKEND_URL + "/user/" + username, {credentials:'include'})
   return (await response.json())
 };
 

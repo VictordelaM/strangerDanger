@@ -3,6 +3,7 @@ import multer from 'multer'
 import { User } from '../models/users.js'
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
+import { checkAuth } from '../middleware/checkAuth.js'
 
 export const userRouter = express.Router()
 const mult = multer()
@@ -37,12 +38,12 @@ userRouter.post('/login', mult.none() , async(req,res)=>{
         res.json({status: 'failed'})
     }else{
         const token = jwt.sign({username}, process.env.JWT_SECRET)
-        res.cookie("token", token)
+        res.cookie("token", token, {httpOnly:true})
         res.json({status: 'ok', token: token})}
     
 })
 
-userRouter.get('/:username', async(req,res)=>{
+userRouter.get('/:username',checkAuth,async(req,res)=>{
     const username = req.params.username
     const user = await User.findOne({username}).lean();
     res.json(user)
