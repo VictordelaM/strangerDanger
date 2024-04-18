@@ -2,7 +2,7 @@ export const login = async (event) => {
   event.preventDefault();
   const form = event.target;
   const formData = new FormData(form);
-
+  const checkName = await fetch(import.meta.env.VITE_BACKEND_URL+"")
   const response = await fetch(import.meta.env.VITE_BACKEND_URL+"/user/login", {
     method: "POST",
     body: formData,
@@ -20,12 +20,18 @@ export const logout = async() =>{
   fetch(import.meta.env.VITE_BACKEND_URL + "/user/logout", {credentials:'include', withCredentials:true})
   location.reload()
 }
-
-//!automatischer login klappt erst nach 2. ausführung
+const userCheck =async (response) =>{
+  const { status} = await response.json();
+  return status
+}
+//!muss noch status returnen für redirect abfrage
 export const register = async (event) => {
   event.preventDefault();
   const form = event.target;
   const formData = new FormData(form);
+  const checkUser= await fetch(import.meta.env.VITE_BACKEND_URL+"/user/getAllUsers")
+  console.log(userCheck(checkUser)) 
+
   const responseRegister = await fetch(import.meta.env.VITE_BACKEND_URL+"/user/register", {
     method: "POST",
     body: formData,
@@ -39,7 +45,7 @@ export const register = async (event) => {
 
   const { status, token } = await response.json();
   localStorage.setItem("token", token);
-  location.reload()
+  // location.reload()
   //! mit env datei austauschen
   //? window.location = import.meta.env.OWN_URL
   // window.location = 'http://localhost:5173'

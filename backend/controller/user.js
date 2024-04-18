@@ -51,7 +51,40 @@ userRouter.get('/logout', (req,res)=>{
 })
 
 userRouter.get('/:username',checkAuth,async(req,res)=>{
+    // const {username} = req.body
     const username = req.params.username
     const user = await User.findOne({username}).lean();
     res.json(user)
 })
+
+userRouter.post('/checkRepeatName', mult.none(), async (req, res) => {
+    const {username} = req.body
+    try {
+        const user = await User.findOne({ username }).lean();
+        if (user) {
+            res.json({ status: 'username already exists' });
+        } else {
+            res.json({ status: 'ok' });
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+userRouter.post('/checkRepeatEmail', mult.none(), async (req, res) => {
+    const {email} = req.body
+    try {
+        const user = await User.findOne({ email }).lean();
+        if (user) {
+            res.json({ status: 'email already exists' });
+        } else {
+            res.json({ status: 'ok' });
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+
