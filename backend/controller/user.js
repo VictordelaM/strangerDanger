@@ -43,6 +43,13 @@ userRouter.post('/login', mult.none() , async(req,res)=>{
     
 })
 
+userRouter.get('/logout', (req,res)=>{
+    // document.cookie = 'token' + "max-age=0; path=/; domain=localhost"
+    // document.cookie = 'token; Max-Age=0; path=/; domain=' + location.host;
+    res.clearCookie('token', {domain: 'localhost', path: '/'})
+    
+})
+
 userRouter.get('/:username',checkAuth,async(req,res)=>{
     const username = req.params.username
     const user = await User.findOne({username}).lean();

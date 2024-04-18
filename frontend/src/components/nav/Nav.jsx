@@ -13,7 +13,6 @@ const Nav = () => {
                 const userName = decryptToken().payload.username
                 const user = await getUser(userName)
                 setUser(user)
-                console.log(user)
             } 
             userSet()
           }, []);

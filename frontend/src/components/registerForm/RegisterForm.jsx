@@ -1,10 +1,19 @@
 import { register } from "../../functions/fetches";
 import "./RegisterForm.css";
+import {useNavigate} from 'react-router-dom'
+import { useState } from "react";
 
 const RegisterForm = () => {
+    const [usernameExists, setUsernameExists] = useState(false)
+    const navigate = useNavigate()
+
+    const handleSubmit = async (event)=>{
+        register(event)
+        navigate("/")
+    }
     return ( 
         <>
-        <form onSubmit={register}>
+        <form onSubmit={handleSubmit}>
             <h2>Register</h2>
             <div>
                 {/* <label for="username">Benutzername:</label> */}
@@ -27,4 +36,3 @@ const RegisterForm = () => {
 }
  
 export default RegisterForm;
-

@@ -9,7 +9,6 @@ const LoginForm = () => {
 
     const onSubmit = async (event)=>{
         const status = await login(event)
-        console.log('status',status,localStorage.getItem('token'))
         if(status === "ok"){
             setFalsePassword(false)
             navigate("/")

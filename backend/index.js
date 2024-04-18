@@ -18,6 +18,7 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_SECRET,
 });
 app.use(cookieParser())
+//!CORS_ACCESS in env anlegen (localhost:5173)
 app.use(cors({origin:process.env.CORS_ACCESS,credentials:true}));
 app.use("/user", userRouter);
 app.use("/image", imageRouter);

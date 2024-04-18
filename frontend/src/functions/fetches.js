@@ -8,7 +8,6 @@ export const login = async (event) => {
     body: formData,
     credentials:'include'
   });
-  console.log('response', response)
 
   const { status, token } = await response.json();
   if(status=='failed'){return status}
@@ -16,8 +15,9 @@ export const login = async (event) => {
   return status
 };
 
-export const logout = () =>{
+export const logout = async() =>{
   localStorage.removeItem('token')
+  fetch(import.meta.env.VITE_BACKEND_URL + "/user/logout", {credentials:'include', withCredentials:true})
   location.reload()
 }
 
@@ -42,7 +42,7 @@ export const register = async (event) => {
   location.reload()
   //! mit env datei austauschen
   //? window.location = import.meta.env.OWN_URL
-  window.location = 'http://localhost:5173'
+  // window.location = 'http://localhost:5173'
 };
 
 export const getUser =async (username) => {
