@@ -4,6 +4,9 @@ import "./Nav.css"
 import { mainContext } from "../../context/mainProvider";
 import { getUser, logout} from "../../functions/fetches";
 import { decryptToken } from "../../functions/decrypt";
+import { Button } from "../ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
+
 
 const Nav = () => {
     if(localStorage.getItem('token')){
@@ -27,10 +30,15 @@ const Nav = () => {
                 <NavLink to="/Register">Register</NavLink> */}
                 <NavLink to="/UploadImg">Image Upload</NavLink>
                 <div id="usercard">
-                    <img src={user?.pictureUrl} alt="profilPicture" id="profilPicture"/>
+                <Avatar>
+                    <AvatarImage src={user?.pictureUrl} />
+                    <AvatarFallback>CN</AvatarFallback>
+                </Avatar>
+                    {/* <img src={user?.pictureUrl} alt="profilPicture" id="profilPicture"/> */}
                     <div id="nameLogout">
                         <p id="username">{user?.username}</p>
-                        <button onClick={logout}>logout</button>
+                        <Button onClick={logout}>logout</Button>
+                        {/* <button onClick={logout}>logout</button> */}
                     </div>
                 </div>
             </nav>
