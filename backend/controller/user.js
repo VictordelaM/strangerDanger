@@ -62,9 +62,9 @@ userRouter.post('/checkRepeatName', mult.none(), async (req, res) => {
     try {
         const user = await User.findOne({ username }).lean();
         if (user) {
-            res.json({ status: 'username already exists' });
+            res.json({ checkNameStatus: 'username already exists' });
         } else {
-            res.json({ status: 'ok' });
+            res.json({ checkNameStatus: 'ok' });
         }
     } catch (error) {
         console.error(error);
@@ -77,9 +77,9 @@ userRouter.post('/checkRepeatEmail', mult.none(), async (req, res) => {
     try {
         const user = await User.findOne({ email }).lean();
         if (user) {
-            res.json({ status: 'email already exists' });
+            res.json({ checkMailStatus: 'email already exists' });
         } else {
-            res.json({ status: 'ok' });
+            res.json({ checkMailStatus: 'ok' });
         }
     } catch (error) {
         console.error(error);

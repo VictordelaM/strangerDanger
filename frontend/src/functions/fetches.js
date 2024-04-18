@@ -1,8 +1,9 @@
+
+
 export const login = async (event) => {
   event.preventDefault();
   const form = event.target;
   const formData = new FormData(form);
-  const checkName = await fetch(import.meta.env.VITE_BACKEND_URL+"")
   const response = await fetch(import.meta.env.VITE_BACKEND_URL+"/user/login", {
     method: "POST",
     body: formData,
@@ -29,9 +30,28 @@ export const register = async (event) => {
   event.preventDefault();
   const form = event.target;
   const formData = new FormData(form);
-  const checkUser= await fetch(import.meta.env.VITE_BACKEND_URL+"/user/getAllUsers")
-  console.log(userCheck(checkUser)) 
-
+  const formData2 = formData
+  const formData3 = formData
+  const checkName = await fetch(import.meta.env.VITE_BACKEND_URL+"/user/checkRepeatName",{
+    method: "POST",
+    body: formData2,
+  })
+  const {checkNameStatus} = await checkName.json()
+  console.log(checkNameStatus)
+  const failStatus = []
+  if(checkNameStatus == 'username already exists'){
+    console.log('user already exists')
+    return checkNameStatus
+  }
+  const checkEmail = await fetch(import.meta.env.VITE_BACKEND_URL+"/user/checkRepeatEmail",{
+    method: "POST",
+    body: formData2,
+  })
+  const {checkMailStatus} = await checkEmail.json()
+  if(checkMailStatus == 'email already exists'){
+    console.log('mail already exists')
+    return checkMailStatus
+  }
   const responseRegister = await fetch(import.meta.env.VITE_BACKEND_URL+"/user/register", {
     method: "POST",
     body: formData,
