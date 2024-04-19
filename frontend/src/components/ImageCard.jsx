@@ -5,8 +5,10 @@ const ImageCard = ({ images }) => {
   const [like, setLike] = useState(false);
 
   const handleLike = async (id) => {
+    console.log(id);
     if (like === false) {
-      const data = {};
+      const data = localStorage.getItem("token");
+      console.log(data);
       likeImage(`${import.meta.env.VITE_BACKEND_URL}/image/${id}`, data);
     } else {
     }
@@ -19,6 +21,7 @@ const ImageCard = ({ images }) => {
       <button
         onClick={() => {
           setLike(!like);
+          handleLike(images._id);
         }}
       >
         DAUMENHOCH {like ? images.likes + 1 : images.likes}
