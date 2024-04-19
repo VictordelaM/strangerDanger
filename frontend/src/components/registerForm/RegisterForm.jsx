@@ -9,21 +9,22 @@ const RegisterForm = () => {
     const navigate = useNavigate()
 
     const handleSubmit = async (event)=>{
+        const compare = []
         const res = await register(event)
-        console.log(res) 
-        switch (res){
-            case 'username already exists':
-                setUsernameExists(true)
-                break
-            case 'email already exists':
-                setEmailExists(true)
-                setUsernameExists(false)
-                break
-            case undefined:
-                setEmailExists(false)
-                setUsernameExists(false)
+        console.log({res})
+        if(res.length > 0){
+            console.log('lang', res)
+            setUsernameExists(res.includes('username already exists'))
+            setEmailExists(res.includes('email already exists'))
+
+        }else{
+            console.log('kurz', res)
+            setEmailExists(false)
+            setUsernameExists(false)
+            navigate("/")
         }
-        // navigate("/")
+        console.log('user:', res.includes('username already exists'))
+        console.log('email:',res.includes('email already exists'))
     }
     return ( 
         <>

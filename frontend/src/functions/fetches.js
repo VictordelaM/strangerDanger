@@ -30,18 +30,18 @@ export const register = async (event) => {
   event.preventDefault();
   const form = event.target;
   const formData = new FormData(form);
-  const formData2 = formData
-  const formData3 = formData
+
+
   const checkName = await fetch(import.meta.env.VITE_BACKEND_URL+"/user/checkRepeatName",{
     method: "POST",
-    body: formData2,
+    body: formData,
   })
   const {checkNameStatus} = await checkName.json()
   console.log(checkNameStatus)
   const failStatus = []
   if(checkNameStatus == 'username already exists'){
-    console.log('user already exists')
-    return checkNameStatus
+    failStatus.push(checkNameStatus)
+    // return checkNameStatus
   }
   const checkEmail = await fetch(import.meta.env.VITE_BACKEND_URL+"/user/checkRepeatEmail",{
     method: "POST",
@@ -49,14 +49,18 @@ export const register = async (event) => {
   })
   const {checkMailStatus} = await checkEmail.json()
   if(checkMailStatus == 'email already exists'){
-    console.log('mail already exists')
-    return checkMailStatus
+    failStatus.push(checkMailStatus)
+    // return checkMailStatus
   }
+  if(failStatus.length > 0){return failStatus}
+  // if(failStatus.length > 0){return {status: "error", errors: failStatus}}
+
   const responseRegister = await fetch(import.meta.env.VITE_BACKEND_URL+"/user/register", {
     method: "POST",
     body: formData,
     credentials:'include'
   });
+  
   const response = await fetch(import.meta.env.VITE_BACKEND_URL+"/user/login", {
     method: "POST",
     body: formData,
@@ -65,6 +69,8 @@ export const register = async (event) => {
 
   const { status, token } = await response.json();
   localStorage.setItem("token", token);
+  return failStatus
+  // return {status: "ok"}
   // location.reload()
   //! mit env datei austauschen
   //? window.location = import.meta.env.OWN_URL
