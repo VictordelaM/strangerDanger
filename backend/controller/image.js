@@ -5,6 +5,7 @@ import { uploadImage } from "../utils/uploadImage.js";
 export const imageRouter = express.Router();
 const mult = multer({ storage: multer.memoryStorage() });
 
+
 imageRouter.post("/create", mult.single("image"), async (req, res) => {
   const { text, likes } = req.body;
   if (!text || !req.file) {
@@ -23,11 +24,11 @@ imageRouter.get("/", async (req, res) => {
 });
 
 imageRouter.patch("/:id", mult.single("image"), async (req, res) => {
-  const { text, likes } = req.body;
+  const { likes } = req.body;
   const id = req.params.id;
   const image = await Image.findOneAndUpdate(
     { _id: id },
-    { text, likes },
+    { likes },
     { new: true }
   );
   res.json(image);
