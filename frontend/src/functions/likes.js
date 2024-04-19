@@ -1,10 +1,12 @@
+import { decryptToken } from "./decrypt";
+
 export const likeImage = async (url, data) => {
   const options = {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(data),
+    body: JSON.stringify(decryptToken()),
   };
 
   try {

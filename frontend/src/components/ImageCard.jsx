@@ -9,7 +9,7 @@ const ImageCard = ({ images }) => {
     if (like === false) {
       const data = localStorage.getItem("token");
       console.log(data);
-      likeImage(`${import.meta.env.VITE_BACKEND_URL}/image/${id}`, data);
+      likeImage(`${import.meta.env.VITE_BACKEND_URL}/image/like/${id}`, data);
     } else {
     }
   };
