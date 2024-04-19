@@ -45,7 +45,7 @@ export const register = async (event) => {
   }
   const checkEmail = await fetch(import.meta.env.VITE_BACKEND_URL+"/user/checkRepeatEmail",{
     method: "POST",
-    body: formData2,
+    body: formData,
   })
   const {checkMailStatus} = await checkEmail.json()
   if(checkMailStatus == 'email already exists'){
