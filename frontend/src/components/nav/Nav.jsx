@@ -1,8 +1,8 @@
-import { useContext ,useEffect} from "react";
-import { NavLink } from "react-router-dom"
-import "./Nav.css"
+import { useContext, useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import "./Nav.css";
 import { mainContext } from "../../context/mainProvider";
-import { getUser, logout} from "../../functions/fetches";
+import { getUser, logout } from "../../functions/fetches";
 import { decryptToken } from "../../functions/decrypt";
 import { Button } from "../ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
@@ -62,4 +62,3 @@ const Nav = () => {
 }
  
 export default Nav;
-

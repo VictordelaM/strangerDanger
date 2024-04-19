@@ -90,7 +90,6 @@ export const uploadImg = (event) => {
     method: "POST",
     body: formData,
   });
-  window.location.href = import.meta.env.VITE_FRONTEND_URL + "/images";
 };
 
 export const getImages = (images) => {
@@ -98,5 +97,3 @@ export const getImages = (images) => {
     .then((resp) => resp.json())
     .then((json) => images(json));
 };
-
-
