@@ -1,12 +1,14 @@
+import { decryptToken } from "./decrypt";
+
 export const likeImage = async (url, data) => {
   const options = {
-    method: "PATCH",
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
+    credentials: "include",
     body: JSON.stringify(data),
   };
-
   try {
     const response = await fetch(url, options);
 
