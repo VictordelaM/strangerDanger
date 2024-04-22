@@ -10,7 +10,6 @@ const RegisterForm = () => {
 
     const handleSubmit = async (event)=>{
         const res = await register(event)
-        console.log({res})
         if(res.length > 0){
             setUsernameExists(res.includes('username already exists'))
             setEmailExists(res.includes('email already exists'))

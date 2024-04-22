@@ -37,7 +37,6 @@ export const register = async (event) => {
     body: formData,
   })
   const {checkNameStatus} = await checkName.json()
-  console.log(checkNameStatus)
   const failStatus = []
   if(checkNameStatus == 'username already exists'){
     failStatus.push(checkNameStatus)
@@ -54,7 +53,6 @@ export const register = async (event) => {
   }
   if(failStatus.length > 0){return failStatus}
   // if(failStatus.length > 0){return {status: "error", errors: failStatus}}
-
   const responseRegister = await fetch(import.meta.env.VITE_BACKEND_URL+"/user/register", {
     method: "POST",
     body: formData,
