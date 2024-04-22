@@ -1,5 +1,5 @@
 import { register } from "../../functions/fetches";
-import "./RegisterForm.css";
+import "./registerForm.css";
 import {useNavigate} from 'react-router-dom'
 import { useState } from "react";
 
